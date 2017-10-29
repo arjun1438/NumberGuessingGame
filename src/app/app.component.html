@@ -1,3 +1,21 @@
-<h1>
-  {{title}}
-</h1>
+<div class ="container">
+	<h2>Guess the Number !</h2>
+	<p class="Well lead">Guess the number generated between 1 and 1000.</p>
+	<label> Your Guess: </label>
+	<input type="number" [value]="guess" (input)="guess = $event.target.value" />
+    <button (click)="verifyGuess()" class="btn btn-primary btn-sm">Verify</button>
+    <button (click)="initializeGame()" class="btn btn-warning btn-sm"> Restart </button>
+    
+    <div>
+        <p *ngIf="deviation<0" class="alert alert-warning">
+        You guessed a higher number.</p>
+        <p *ngIf="deviation>0" class="alert alert-warning">
+        You guessed a lower number.</p>
+        <p *ngIf="deviation===0" class="alert alert-success">
+        Great! you guessed the correct number.</p>
+    </div>
+
+    <p class="text-info">No of guesses :
+        <span class="badge">{{noOfTries}}</span>
+    </p>
+</div>
